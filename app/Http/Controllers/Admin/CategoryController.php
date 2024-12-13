@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -28,10 +29,18 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         // dd($request);
         $categories = Category::create($request->all());
+
+        $file_name = time().'.'.$request->logo->extension();
+
+        $upload = $request->logo->move(public_path('images/categories/'),$file_name);
+        if($upload){
+            $categories->logo = "/images/categories/".$file_name;
+        }
+
         $categories->save();
 
         return redirect()->route('backendcategories.index');

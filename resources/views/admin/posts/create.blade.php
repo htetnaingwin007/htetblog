@@ -24,42 +24,59 @@
                     @csrf
                     <div class="mb-3">
                         <label for="codeno" class="form-label">Id</label>
-                        <input type="text" class="form-control" id="codeno" name="id">
+                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="codeno" name="id">
+                        @error('id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="name" name="title">
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="name" name="title">
+                        @error('title')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
-                        <input type="file" class="form-control" id="image" aria-label="Upload" name="image">
+                        <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" aria-label="Upload" name="image">
+                        @error('image')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         
                     </div>
                     <div class="mb-3">
                         <div class="">
                             <label for="description" class="form-label">Descriptions</label>
-                            <textarea class="form-control" id="description" style="height: 100px" name="description"></textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" style="height: 100px" name="description"></textarea>
+                            @error('description')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>  
 
                     <div class="mb-3">
                         <label for="category" class="form-label">Category</label>
-                        <select class="form-select" id="category" name="category_id">
+                        <select class="form-select @error('category_id') is-invalid @enderror" id="category" name="category_id">
                             <option value="" selected>Choose Category</option>
                             @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                         </select>
-
+                        @error('category_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="user" class="form-label">Users</label>
-                        <select class="form-select" id="user" name="user_id">
+                        <select class="form-select @error('user_id') is-invalid @enderror" id="user" name="user_id">
                             <option value="" selected>Choose Users</option>
                             @foreach($users as $user)
                             <option value="{{$user->id}}">{{$user->name}}</option>
                             @endforeach
                         </select>
+                        @error('user_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3 row mx-1">
                         <button class="btn btn-lg btn-primary">Save</button>
