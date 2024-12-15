@@ -69,7 +69,11 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::all();
+        $users = User::all();
+
+        return view('admin.posts.edit',compact('post','categories','users'));
     }
 
     /**
@@ -85,6 +89,10 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // echo "<h1>$id</h1>";
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect()->route('backendposts.index');
     }
 }

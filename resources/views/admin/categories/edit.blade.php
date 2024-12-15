@@ -24,14 +24,14 @@
                     @csrf
                     <div class="mb-3">
                         <label for="id" class="form-label">Id</label>
-                        <input type="no" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{old('id')}}">
+                        <input type="no" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{$category->id}}">
                         @error('id')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{$category->name}}">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

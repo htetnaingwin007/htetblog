@@ -24,14 +24,14 @@
                     @csrf
                     <div class="mb-3">
                         <label for="codeno" class="form-label">Id</label>
-                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="codeno" name="id" value="{{old('id')}}">
+                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="codeno" name="id" value="{{$post->id}}">
                         @error('id')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Title</label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="name" name="title" value="{{old('title')}}">
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="name" name="title" value="{{$post->title}}">
                         @error('title')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -47,7 +47,7 @@
                     <div class="mb-3">
                         <div class="">
                             <label for="description" class="form-label">Descriptions</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" style="height: 100px" name="description">{{old('description')}}</textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" style="height: 100px" name="description">{{$post->description}}</textarea>
                             @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -59,7 +59,7 @@
                         <select class="form-select @error('category_id') is-invalid @enderror" id="category" name="category_id">
                             <option value="" selected>Choose Category</option>
                             @foreach($categories as $category)
-                            <option value="{{$category->id}}" {{old('category_id') == $category->id ? 'selected':''}}>{{$category->name}}</option>
+                            <option value="{{$category->id}}" {{$post->category_id == $category->id ? 'selected':''}}>{{$category->name}}</option>
                             @endforeach
                         </select>
                         @error('category_id')
@@ -71,7 +71,7 @@
                         <select class="form-select @error('user_id') is-invalid @enderror" id="user" name="user_id">
                             <option value="" selected>Choose Users</option>
                             @foreach($users as $user)
-                                <option value="{{$user->id}}" {{old('category_id') == $user->id ? 'selected':''}}>{{$user->name}}</option>
+                                <option value="{{$user->id}}" {{$post->user_id == $user->id ? 'selected':''}}>{{$user->name}}</option>
                             @endforeach
                         </select>
                         @error('user_id') 
