@@ -17,8 +17,8 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('backenddashboard')}}">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('backendposts.index')}}">Posts</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('backend.dashboard')}}">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('backend.posts.index')}}">Posts</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
 
                 </div>

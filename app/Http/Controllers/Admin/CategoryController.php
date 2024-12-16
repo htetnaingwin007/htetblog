@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -43,7 +44,7 @@ class CategoryController extends Controller
 
         $categories->save();
 
-        return redirect()->route('backendcategories.index');
+        return redirect()->route('backend.categories.index');
     }
 
     /**
@@ -67,9 +68,28 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCategoryRequest $request, string $id)
     {
-        //
+        // echo $id;
+        // dd($request);
+        $category = Category::find($id);
+        $category->update($request->all());
+
+        if($request->hasFile('logo')){
+            $file_name = time().'.'.$request->logo->extension();
+
+            $upload = $request->logo->move(public_path('images/categories/'),$file_name);
+            if($upload){
+                $category->logo = "/images/categories/".$file_name;
+
+            }
+
+        }else{
+            $category->logo = $request->old_image;
+        }
+
+        $category->save();
+        return redirect()->route('backend.categories.index');
     }
 
     /**
@@ -80,6 +100,6 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        return redirect()->route('backendcategories.index');
+        return redirect()->route('backend.categories.index');
     }
 }

@@ -3,14 +3,14 @@
 <div class="container-fluid px-4">
         <div class="my-3">
             <h1 class="mt-4 d-inline">Posts</h1>
-            <a href="{{route('backendposts.create')}}" class="btn btn-primary float-end">
+            <a href="{{route('backend.posts.create')}}" class="btn btn-primary float-end">
                 Create Posts
             </a>
 
         </div>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="{{route('backenddashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{route('backenddashboard')}}">Posts</a></li>
+            <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{route('backend.posts.index')}}">Posts</a></li>
             
             <li class="breadcrumb-item active">Create Posts</li>
         </ol>
@@ -20,7 +20,7 @@
                 Post Lists
             </div>
             <div class="card-body">
-                <form action="{{route('backendposts.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('backend.posts.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="codeno" class="form-label">Id</label>

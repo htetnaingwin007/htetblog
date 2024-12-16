@@ -9,8 +9,8 @@
 
         </div>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="{{route('backenddashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{route('backendcategories.index')}}">Categories</a></li>
+            <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{route('backend.categories.index')}}">Categories</a></li>
             
             <li class="breadcrumb-item active">Create items</li>
         </ol>
@@ -20,7 +20,7 @@
                 Post Lists
             </div>
             <div class="card-body">
-                <form action="{{route('backendcategories.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('backend.categories.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="id" class="form-label">Id</label>

@@ -3,13 +3,13 @@
 <div class="container-fluid px-4">
         <div class="my-3">
             <h1 class="mt-4 d-inline">Posts</h1>
-            <a href="{{route('backendposts.create')}}" class="btn btn-primary float-end">
+            <a href="{{route('backend.posts.create')}}" class="btn btn-primary float-end">
                 Create Posts
             </a>
 
         </div>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-post"><a href="{{route('backenddashboard')}}">Dashboard</a></li>
+            <li class="breadcrumb-post"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
             <li class="breadcrumb-post active">Posts</li>
         </ol>
         <div class="card mb-4">
@@ -56,7 +56,7 @@
                                 <td>{{$post->category_id}}</td>
                                 <td>{{$post->user_id}}</td>
                                 <td>
-                                    <a href="{{route('backendposts.edit',$post->id)}}" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="{{route('backend.posts.edit',$post->id)}}" class="btn btn-sm btn-warning">Edit</a>
                                     <button class="btn btn-sm btn-danger delete" data-id="{{$post->id}}">Delete</button>
                                 </td>
                             </tr>
