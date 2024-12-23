@@ -26,9 +26,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        $users = User::all();
+        // $users = User::all();
         $categories = Category::all();
-        return view('admin.posts.create',compact('categories','users'));
+        return view('admin.posts.create',compact('categories'));
 
        
         
@@ -72,9 +72,9 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $categories = Category::all();
-        $users = User::all();
+        // $users = User::all();
 
-        return view('admin.posts.edit',compact('post','categories','users'));
+        return view('admin.posts.edit',compact('post','categories'));
     }
 
     /**

@@ -2,20 +2,20 @@
 @section('content')
 <div class="container-fluid px-4">
         <div class="my-3">
-            <h1 class="mt-4 d-inline">Posts</h1>
-            <a href="{{route('backend.posts.create')}}" class="btn btn-primary float-end">
-                Create Posts
+            <h1 class="mt-4 d-inline">Users</h1>
+            <a href="{{route('backend.users.create')}}" class="btn btn-primary float-end">
+                Create User
             </a>
 
         </div>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-post"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-post active">Posts</li>
+            <li class="breadcrumb-post active">Users</li>
         </ol>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Post Lists
+                User Lists
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -24,10 +24,9 @@
                             <th>No</th>
                             <th>Id</th>
                             <th>Name</th>
+                            <th>Email</th>
+                            <!-- <th>Password</th> -->
                             
-                           
-                            <th>Category</th>
-                            <th>User</th>
                             <th>#</th>
                             
                         </tr>
@@ -37,9 +36,9 @@
                             <th>No</th>
                             <th>Id</th>
                             <th>Name</th>
+                            <th>Email</th>
+                            <!-- <th>Password</th> -->
                             
-                            <th>Category</th>
-                            <th>User</th>
                             <th>#</th>
                         </tr>
                     </tfoot>
@@ -47,30 +46,31 @@
                         @php 
                             $i=1;
                         @endphp
-                        @foreach($posts as $post)
+                        @foreach($users as $user)
                             <tr>
                                 <td>{{$i++}}</td>
-                                <td>{{$post->id}}</td>
-                                <td>{{$post->title}}</td>
-                                
-                                <td>{{$post->category_id}}</td>
-                                <td>{{$post->user_id}}</td>
+                                <td>{{$user->id}}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <!-- <td>{{$user->password}}</td> -->
+
                                 <td>
-                                    <a href="{{route('backend.posts.edit',$post->id)}}" class="btn btn-sm btn-warning">Edit</a>
-                                    <button class="btn btn-sm btn-danger delete" data-id="{{$post->id}}">Delete</button>
+                                    <a href="{{route('backend.users.edit',$user->id)}}" class="btn btn-sm btn-warning">Edit</a>
+                                    <button class="btn btn-sm btn-danger delete" data-id="{{$user->id}}">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                     
                 </table>
-                {{$posts->links()}}
+
+                {{$users->links()}}
             </div>
         </div>
         
 </div>
 
-        <!-- Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -92,8 +92,7 @@
             </div>
         </div>
     </div>
-
-
+        
 @endsection
 @section('script')
     <script>
@@ -102,7 +101,7 @@
                 // alert('hello');
                 let id = $(this).data('id');
                 // console.log(id);
-                $('#deleteForm').attr('action',`posts/${id}`);
+                $('#deleteForm').attr('action',`users/${id}`);
                 $('#deleteModal').modal('show');
             })
         })

@@ -5,7 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\File;
 
-class UpdateCategoryRequest extends FormRequest
+
+class UserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +26,11 @@ class UpdateCategoryRequest extends FormRequest
         return [
             'id' => 'required',
             'name' => 'required',
-            
+            'phone' => 'required',
+
+            'email' => 'required',
+            'password' => 'required','hashed',
+            'role' => 'required',
         ];
     }
 }
