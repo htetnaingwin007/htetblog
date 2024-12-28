@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Category::factory(10)->create();
-        Post::factory(10)->create();
+        User::create([
+            'name' => 'Super Admin',
+            'phone' => '099999999',
+            'profile' => '/images/profiles/sa.png',
+            'email' => 'superadmin@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role' => 'Super Admin',
+        ]);
     }
 }

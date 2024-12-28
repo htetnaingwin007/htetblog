@@ -4,8 +4,8 @@
 <div class="container-fluid px-4">
     <div class="my-3">
         <h1 class="mt-4 d-inline">Users</h1>
-        <a href="" class="btn btn-primary float-end">
-            Create Users
+        <a href="{{route('backend.users.index')}}" class="btn btn-danger float-end">
+            Cancel
         </a>
 
     </div>
@@ -90,7 +90,7 @@
                             
                             <option value="Super Admin" {{$user->role == 'Super Admin' ? 'selected':''}}>Super Admin</option>
                             <option value="Admin" {{$user->role == 'Admin' ? 'selected':''}}>Admin</option>
-                            <option value="User" {{$user->role == 'User' ? 'selected':''}}>User</option>
+                           
 
 
                         </select>

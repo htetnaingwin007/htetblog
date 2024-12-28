@@ -3,8 +3,8 @@
 <div class="container-fluid px-4">
         <div class="my-3">
             <h1 class="mt-4 d-inline">Posts</h1>
-            <a href="{{route('backend.posts.create')}}" class="btn btn-primary float-end">
-                Create Posts
+            <a href="{{route('backend.posts.index')}}" class="btn btn-danger float-end">
+                Cacel
             </a>
 
         </div>
@@ -67,17 +67,11 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="user" class="form-label">Users</label>
-                        <select class="form-select @error('user_id') is-invalid @enderror" id="user" name="user_id">
-                            <option value="" selected>Choose Users</option>
-                            @foreach($users as $user)
-                                <option value="{{$user->id}}" {{old('category_id') == $user->id ? 'selected':''}}>{{$user->name}}</option>
-                            @endforeach
-                        </select>
-                        @error('user_id') 
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        
+                        <input type="hidden" class="form-control @error('id') is-invalid @enderror" id="" name="user_id" value="{{Auth::id()}}">
                     </div>
+                    
+                    
                     <div class="mb-3 row mx-1">
                         <button class="btn btn-lg btn-primary">Save</button>
                     </div>

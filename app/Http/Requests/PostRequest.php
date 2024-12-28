@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostRequest extends FormRequest
 {
@@ -31,4 +33,5 @@ class PostRequest extends FormRequest
             'user_id' => 'required',
         ];
     }
+    
 }

@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\User;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostController extends Controller
 {
@@ -40,7 +42,7 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        // dd($request);
+       
         $posts = Post::create($request->all());
 
         $file_name = time().'.'.$request->image->extension();
@@ -49,7 +51,7 @@ class PostController extends Controller
         if($upload){
             $posts->image = "/images/posts/".$file_name;
         }
-
+        
         $posts->save();
     
 

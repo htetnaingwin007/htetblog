@@ -11,9 +11,9 @@
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">{{$post->title}}</h1>
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">Posted on {{$post->created_at}} by Start Bootstrap</div>
+                            <div class="text-muted fst-italic mb-2">Posted on {{$post->created_at}} by {{$post->user->name}}</div>
                             <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="">{{$post->category_id}}</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="">{{$post->category->name}}</a>
                             <!-- <a class="badge bg-secondary text-decoration-none link-light" href="">{{$post->category_id}}</a> -->
                         </header>
                         <!-- Preview image figure-->
@@ -21,11 +21,6 @@
                         <!-- Post content-->
                         <section class="mb-5">
                             <p class="fs-5 mb-4">{{$post->description}}</p>
-                            <!-- <p class="fs-5 mb-4">The universe is large and old, and the ingredients for life as we know it are everywhere, so there's no reason to think that Earth would be unique in that regard. Whether of not the life became intelligent is a different question, and we'll see if we find that.</p>
-                            <p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
-                            <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
-                            <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-                            <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p> -->
                         </section>
                     </article>
                     <!-- Comments section-->
@@ -90,16 +85,12 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Web Design</a></li>
-                                        <li><a href="#!">HTML</a></li>
-                                        <li><a href="#!">Freebies</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">JavaScript</a></li>
-                                        <li><a href="#!">CSS</a></li>
-                                        <li><a href="#!">Tutorials</a></li>
+                                    @php
+                                    $categories = \App\Models\Category::all();
+                                    @endphp
+                                    @foreach($categories as $category)
+                                        <li><a class="" href="{{route('post.categories',$category->id)}}">{{$category->name}}</a></li>
+                                    @endforeach
                                     </ul>
                                 </div>
                             </div>

@@ -14,18 +14,7 @@
             <div class="row">
                 <!-- Blog entries-->
                 <div class="col-lg-8">
-                    <!-- Featured blog post-->
-                    @if($latest_post)
-                        <div class="card mb-4">
-                            <img class="card-img-top" src="{{$latest_post->image}}" alt="..." />
-                            <div class="card-body">
-                                <div class="small text-muted">{{$latest_post->created_at}}</div>
-                                <h2 class="card-title">{{$latest_post->title}}</h2>
-                                <p class="card-text">{{Str::words($latest_post->description,30,'...')}}</p>
-                                <a class="btn btn-primary" href="{{route('blog-post',$latest_post->id)}}">Read more →</a>
-                            </div>
-                        </div>
-                    @endif
+        
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
                         @foreach($posts as $post)
