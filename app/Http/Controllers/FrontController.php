@@ -12,8 +12,9 @@ class FrontController extends Controller
 {
     public function blogHome()
     {
-        $posts = Post::orderBy('id','DESC')->paginate(4);
+        // $posts = Post::orderBy('id','DESC')->skip(1)->paginate(4);
         $latest_post = Post::orderBy('id','DESC')->limit(1)->first();
+        $posts = Post::where('id', '!=',$latest_post->id)->orderBy('id','DESC')->paginate(4);
        
 
         // var_dump($posts);
